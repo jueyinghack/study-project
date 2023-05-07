@@ -4,3 +4,7 @@ spring:
     username: root
     password: qwe7744066
     url: jdbc:mysql://localhost:3306/study?useUnicode=true&characterEncoding=utf-8
+
+mybatis-plus:
+  type-aliases-package: com.sec.entity
+  mapper-locations: classpath:mappers/*Mapper.xml

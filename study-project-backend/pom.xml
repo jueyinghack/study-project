@@ -55,6 +55,12 @@
             <artifactId>fastjson</artifactId>
             <version>2.0.25</version>
         </dependency>
+        <!--mybatis-plus 从数据库生成后端代码,直到controller-->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>3.5.1</version>
+        </dependency>
     </dependencies>
 
     <build>
