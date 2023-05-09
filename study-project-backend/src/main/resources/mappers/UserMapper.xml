@@ -5,5 +5,10 @@
     <select id="findAccountByUsernameOrEmail"  resultType="Account">
         select * from db_account where username=#{text} or email=#{text}
     </select>
+    <update id="resetPasswordByEmail">
+        update db_account
+        set password = #{password}
+        where email = #{email}
+    </update>
 
 </mapper>

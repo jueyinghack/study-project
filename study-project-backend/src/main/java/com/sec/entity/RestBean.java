@@ -18,8 +18,12 @@ public class RestBean {
         return new RestBean(200,"success",null);
     }
 
-    public static RestBean success(Object data){
-        return new RestBean(200,"success",data);
+    public static RestBean success(String message){
+        return new RestBean(200,message,null);
+    }
+
+    public static RestBean success(String message,Object data){
+        return new RestBean(200,message,data);
     }
 
     public static RestBean failure(int code){
@@ -28,6 +32,10 @@ public class RestBean {
 
     public static RestBean failure(int code,String msg){
         return new RestBean(code,msg,null);
+    }
+
+    public static RestBean failure(int code,String message,Object data){
+        return new RestBean(code,message,data);
     }
 
 }
