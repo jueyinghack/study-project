@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import {useStore} from "@/stores";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -7,9 +8,10 @@ const router = createRouter({
       path:"/",
       name:"welcome",
       component:()=> import('@/views/WelcomeView.vue'),
+      redirect:"/login",
       children:[
         {
-          path:'',
+          path:'/login',
           name:'welcome-login',
           component:() => import('@/components/welcome/LoginPage.vue')
         },{
@@ -31,5 +33,6 @@ const router = createRouter({
     }
   ]
 })
+
 
 export default router

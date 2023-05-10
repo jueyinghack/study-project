@@ -51,7 +51,7 @@
                         <el-col :span="17">
                             <el-input placeholder="验证码"
                                       v-model="form.code"
-                                      >
+                            >
                                 <template #prefix>
                                     <el-icon>
                                         <EditPen/>
@@ -128,7 +128,6 @@ const validatePasswordRepeat = (rule, value, callback) => {
 const isEmailValid = ref(false)
 
 const onValidate = (prop, isValid) => {
-    console.log(isValid);
     if (prop === 'email')
         isEmailValid.value = isValid
 }
@@ -139,14 +138,15 @@ const coldTime = ref(0);
 const register = () => {
     formRef.value.validate((isValid) => {
         if (isValid) {
-            post("/api/auth/register",{
+            post("/api/auth/register", {
                 username: form.username,
                 password: form.password,
                 email: form.email,
                 code: form.code
-            },(message)=>{
+            }, (message) => {
+                router.push("/")
                 ElMessage.success(message);
-            },(message)=>{
+            }, (message) => {
                 ElMessage.error(message);
             })
         } else {
@@ -174,14 +174,17 @@ const rules = {
         {required: true, message: '请输入邮箱', trigger: ['blur', 'change']},
     ]
 }
-
 const validateEmail = () => {
-    post("/api/auth/valid-register-email",{
+    coldTime.value = 60
+    post("/api/auth/valid-register-email", {
         email: form.email
-    },(message)=>{
+    }, (message) => {
+
         ElMessage.success(message)
-        coldTime.value = 60
-        setInterval(()=> coldTime.value-- , 1000);
+
+        setInterval(() => coldTime.value--, 1000);
+    }, () => {
+        coldTime.value = 0
     })
 }
 

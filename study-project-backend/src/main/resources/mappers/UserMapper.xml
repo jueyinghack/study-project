@@ -11,4 +11,8 @@
         where email = #{email}
     </update>
 
+    <select id="findAccountUserByUsernameOrEmail" resultType="com.sec.entity.AccountUser">
+        select * from db_account where username=#{text} or email=#{text}
+    </select>
+
 </mapper>

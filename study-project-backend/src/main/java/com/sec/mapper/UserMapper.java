@@ -2,6 +2,7 @@ package com.sec.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.sec.entity.Account;
+import com.sec.entity.AccountUser;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
@@ -13,6 +14,6 @@ public interface UserMapper extends BaseMapper<Account> {
 
     Integer resetPasswordByEmail(@Param("email")String email,@Param("password")String password);
 
-
+    AccountUser findAccountUserByUsernameOrEmail(@Param("text")String text);
 }
 

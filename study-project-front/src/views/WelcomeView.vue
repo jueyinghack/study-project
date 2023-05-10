@@ -12,11 +12,9 @@
         </div>
 
         <div style="width: 400px;background-color:white;z-index: 1">
-            <router-view v-slot="{Component}">
                 <transition name="el-zoom-in-center" >
-                    <component :is="Component" style="height: 100%"/>
+                    <router-view/>
                 </transition>
-            </router-view>
         </div>
 
     </div>

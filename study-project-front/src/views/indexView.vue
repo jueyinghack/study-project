@@ -11,11 +11,14 @@
 import {get} from "@/net";
 import {ElMessage} from "element-plus";
 import router from "@/router";
+import {useStore} from "@/stores";
 
+const store = useStore()
 const logout = () =>{
     get('/api/auth/logout',()=>{
-        ElMessage.success("退出登录成功")
         router.push('/')
+        store.auth.user = null;
+        ElMessage.success("退出登录成功")
     })
 }
 </script>

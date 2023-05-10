@@ -110,6 +110,7 @@ import {reactive, ref} from "vue";
 import {EditPen, Lock, Message} from "@element-plus/icons-vue";
 import {post} from "@/net";
 import {ElMessage} from "element-plus";
+import router from "@/router";
 
 const form = reactive({
     email: '',
@@ -177,9 +178,9 @@ const resetPassword = () => {
     post("/api/auth/do-reset", {
         password: resetForm.password
     }, (message) => {
+        active.value=2;
+        router.push('/');
         ElMessage.success(message)
-        coldTime.value = 60
-        setInterval(() => coldTime.value--, 1000);
     })
 }
 
@@ -190,8 +191,7 @@ const startReset = () => {
         code: form.code
     }, (message) => {
         active.value=1;
-        ElMessage.success(message)
-        router.push("/")
+        ElMessage.success(message);
     })
 }
 
